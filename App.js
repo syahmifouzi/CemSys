@@ -1,131 +1,17 @@
-import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableHighlight, PanResponder, Animated, Easing } from 'react-native';
+import React, { createContext } from 'react';
+import { View, StyleSheet } from 'react-native';
+import Links from "./components/Links.js";
+import store from "./stores/index.js";
 
-class RotatingView extends React.Component {
-  state = {
-      spinValue: new Animated.Value(0),  
-  }
-
-  componentDidMount() {
-      Animated.timing(                  
-          this.state.spinValue,                                   // The animated value to drive
-          {
-              toValue: 1,                   // Animate to 360/value
-              duration: 2000,              // Make it take a while
-              easing: Easing.linear,
-              useNativeDriver: true,
-          }
-      ).start();                    // Starts the animation
-  }
-
-  render() {
-      let spin = this.state.spinValue.interpolate({
-          inputRange: [0,1],
-          outputRange: ['0deg', '180deg']
-      });
-      return (
-          <Animated.View                 
-              style={{
-                  ...this.props.style,
-                  transform: [{rotate:spin}],                     // Bind rotation to animated value
-              }}
-          >
-              {this.props.children}
-          </Animated.View>
-      );
-  }
-};
-
-class ExampleComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this._panResponder = PanResponder.create({
-      // Ask to be the responder:
-      onStartShouldSetPanResponder: (evt, gestureState) => true,
-      onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
-      onMoveShouldSetPanResponder: (evt, gestureState) => true,
-      onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
-
-      onPanResponderGrant: (evt, gestureState) => {
-        // The gesture has started. Show visual feedback so the user knows
-        // what is happening!
-        // gestureState.d{x,y} will be set to zero now
-      },
-      onPanResponderMove: (evt, gestureState) => {
-        // The most recent move distance is gestureState.move{X,Y}
-        // The accumulated gesture distance since becoming responder is
-        // gestureState.d{x,y}
-        this.setState({
-          value: gestureState.dx
-        });
-      },
-      onPanResponderTerminationRequest: (evt, gestureState) => true,
-      onPanResponderRelease: (evt, gestureState) => {
-        // The user has released all touches while this view is the
-        // responder. This typically means a gesture has succeeded
-      },
-      onPanResponderTerminate: (evt, gestureState) => {
-        // Another component has become the responder, so this gesture
-        // should be cancelled
-      },
-      onShouldBlockNativeResponder: (evt, gestureState) => {
-        // Returns whether this component should block native components from becoming the JS
-        // responder. Returns true by default. Is currently only supported on android.
-        return true;
-      },
-    });
-
-    this.state = {
-      value: 0
-    }
-  }
-
-  render() {
-    return (
-      <View {...this._panResponder.panHandlers}>
-        <Text>{this.state.value}</Text>
-      </View>
-    );
-  }
-}
-
-class Bananas extends React.Component {
-  render() {
-    let pic = {
-      uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
-    };
-    return (
-      <Image source={pic} style={{width: 193, height: 110}}/>
-    );
-  }
-}
-
-class Touchables extends React.Component {
-  _onPressButton() {
-    alert('You tapped the button!')
-  }
-
-  render() {
-    return (
-      <TouchableHighlight underlayColor="white">
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>TouchableHighlight</Text>
-          </View>
-        </TouchableHighlight>
-    );
-  }
-}
+const GlobalStore = createContext(store);
 
 export default function App() {
-  
+
   return (
     <View style={styles.container}>
-      <RotatingView>
-        <Bananas />
-      </RotatingView>
-      <Touchables />
-      <Text>Open up App.js to start working on your app!</Text>
-      <ExampleComponent />
+      <GlobalStore.Provider>
+        <Links />
+      </GlobalStore.Provider>
     </View>
   );
 }
@@ -133,19 +19,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
-  },
-  button: {
-    marginBottom: 30,
-    width: 260,
     alignItems: 'center',
-    backgroundColor: '#2196F3'
-  },
-  buttonText: {
-    textAlign: 'center',
-    padding: 20,
-    color: 'white'
-  },
-});
+  }
+})
