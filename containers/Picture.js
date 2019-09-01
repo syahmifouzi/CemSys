@@ -1,8 +1,9 @@
 import React from "react";
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity, PanResponder } from 'react-native';
 import { observer } from "mobx-react";
 import store from "../stores/index.js";
-import styles from './MainpageStyles.js'
+import styles from './MainpageStyles.js';
+import Rotating from '../components/Rotating.js'
 
 const Picture = observer(
     class Picture extends React.Component {
@@ -19,6 +20,9 @@ const Picture = observer(
         render() {
             return (
                 <View>
+                    <Rotating />
+                    <ExampleComponent>
+                     <Text>tatatavdgeagaegadgaegeagaegaegaegaegaegeagaegeage</Text>   </ExampleComponent>
                     <Text>Hello picture World!</Text>
                     <TouchableOpacity style={styles.dButton} onPress={this.login} >
                         <Text>Go to home</Text>
@@ -28,5 +32,59 @@ const Picture = observer(
         }
     }
 )
+
+class ExampleComponent extends React.Component {
+    constructor(props) {
+      super(props);
+      this._panResponder = PanResponder.create({
+        // Ask to be the responder:
+        onStartShouldSetPanResponder: (evt, gestureState) => true,
+        onStartShouldSetPanResponderCapture: (evt, gestureState) => true,
+        onMoveShouldSetPanResponder: (evt, gestureState) => true,
+        onMoveShouldSetPanResponderCapture: (evt, gestureState) => true,
+  
+        onPanResponderGrant: (evt, gestureState) => {
+          // The gesture has started. Show visual feedback so the user knows
+          // what is happening!
+          // gestureState.d{x,y} will be set to zero now
+        },
+        onPanResponderMove: (evt, gestureState) => {
+          // The most recent move distance is gestureState.move{X,Y}
+          // The accumulated gesture distance since becoming responder is
+          // gestureState.d{x,y}
+          this.setState({
+            value: gestureState.dx
+
+          });
+        },
+        onPanResponderTerminationRequest: (evt, gestureState) => true,
+        onPanResponderRelease: (evt, gestureState) => {
+          // The user has released all touches while this view is the
+          // responder. This typically means a gesture has succeeded
+        },
+        onPanResponderTerminate: (evt, gestureState) => {
+          // Another component has become the responder, so this gesture
+          // should be cancelled
+        },
+        onShouldBlockNativeResponder: (evt, gestureState) => {
+          // Returns whether this component should block native components from becoming the JS
+          // responder. Returns true by default. Is currently only supported on android.
+          return true;
+        },
+      });
+  
+      this.state = {
+        value: 0
+      }
+    }
+  
+    render() {
+      return (
+        <View {...this._panResponder.panHandlers}>
+          <Text>{this.state.value}</Text>
+        </View>
+      );
+    }
+  }
 
 export default Picture
