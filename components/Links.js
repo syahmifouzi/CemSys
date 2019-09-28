@@ -24,7 +24,7 @@ const Links = observer(
       }
 
       return (
-        <View>{link}</View>
+        <View style={{flex:1}}>{link}</View>
       )
     }
   }

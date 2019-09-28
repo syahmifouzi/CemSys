@@ -1,0 +1,14 @@
+To make flex working, we need to apply flex: 1 to all container
+https://stackoverflow.com/questions/51048164/flex1-not-filling-whole-screen
+
+device dimensions
+https://dev.to/skptricks/react-native-get-device-height-width-on-button-click-19ld
+
+device status bar height android only
+https://facebook.github.io/react-native/docs/statusbar
+
+device status bar height both
+https://www.npmjs.com/package/react-native-status-bar-height
+
+contain image size
+https://stackoverflow.com/questions/29476165/image-resizing-in-react-native

@@ -8,18 +8,16 @@ const GlobalStore = createContext(store);
 export default function App() {
 
   return (
-    <View style={styles.container}>
-      <GlobalStore.Provider>
-        <Links />
-      </GlobalStore.Provider>
-    </View>
+    <GlobalStore.Provider style={{display:'flex', flex:1, justifyContent: 'center', alignItems: 'center'}}>
+      <Links />
+    </GlobalStore.Provider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
-})
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//   }
+// })

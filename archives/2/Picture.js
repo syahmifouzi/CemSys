@@ -22,16 +22,24 @@ const Picture = observer(
 
     render() {
       return (
-        <View style={{ flex: 1 }}>
-          <View style={{ flex: 5 }}>
-            <ScrollValComponent />
-          </View>
-          <View style={{ flex: 1 }}>
+        <View style={styles.picturePage}>
+          <View style={styles.leftTab}>
             <Text>Actual --> {store.pageNav.actualScroll}</Text>
             <Text>{store.pageNav.scrollVal} degree</Text>
             <TouchableOpacity style={styles.dButton} onPress={this.login} >
               <Text>Go to home</Text>
             </TouchableOpacity>
+          </View>
+          <View style={styles.middleTab}>
+            <View style={{ flex: 1, justifyContent: 'center' }}>
+              <View style={{ position: 'absolute', backgroundColor:'blue'}}>
+                <PizzaSlice />
+              </View>
+              <Rotating />
+            </View>
+          </View>
+          <View style={styles.rightTab}>
+            <ScrollValComponent />
           </View>
         </View>
       );
@@ -77,31 +85,6 @@ const ScrollValComponent = observer(
           } else if (passVal < -360) {
             passVal = passVal + 360
           }
-          if ((passVal >= 0 && passVal < 45) || (passVal < -315 && passVal >= -360)) {
-            passVal = 0
-            store.pageNav.setActualScroll(0)
-          } else if ((passVal >= 45 && passVal < 90) || (passVal < -270 && passVal >= -315)) {
-            passVal = 45
-            store.pageNav.setActualScroll(45)
-          } else if ((passVal >= 90 && passVal < 135) || (passVal < -225 && passVal >= -270)) {
-            passVal = 90
-            store.pageNav.setActualScroll(90)
-          } else if ((passVal >= 135 && passVal < 180) || (passVal < -180 && passVal >= -225)) {
-            passVal = 135
-            store.pageNav.setActualScroll(135)
-          } else if ((passVal >= 180 && passVal < 225) || (passVal < -135 && passVal >= -180)) {
-            passVal = 180
-            store.pageNav.setActualScroll(180)
-          } else if ((passVal >= 225 && passVal < 270) || (passVal < -90 && passVal >= -135)) {
-            passVal = 225
-            store.pageNav.setActualScroll(225)
-          } else if ((passVal >= 270 && passVal < 315) || (passVal < -45 && passVal >= -90)) {
-            passVal = 270
-            store.pageNav.setActualScroll(270)
-          } else if ((passVal >= 315 && passVal < 360) || (passVal < 0 && passVal >= -45)) {
-            passVal = 315
-            store.pageNav.setActualScroll(315)
-          }
           store.pageNav.setlastScrollVal(passVal);
         },
         onPanResponderTerminate: (evt, gestureState) => {
@@ -122,12 +105,7 @@ const ScrollValComponent = observer(
 
     render() {
       return (
-        <View style={{ flex: 1, justifyContent: 'center' }} {...this._panResponder.panHandlers} >
-          <View style={{ position: 'absolute', width: '100%', height: '100%' }}>
-            <PizzaSlice />
-          </View>
-          <Rotating />
-        </View>
+        <View style={{ flex: 1, backgroundColor: 'green' }} {...this._panResponder.panHandlers} />
       );
     }
   }

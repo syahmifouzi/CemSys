@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "braces": "^2.3.2",
     "expo": "^34.0.1",
     "expo-constants": "^6.0.0",
     "mobx": "^5.13.0",
