@@ -5,6 +5,10 @@ export default class PageNav {
     scrollVal = 0;
     lastScrollVal = 0;
     actualScroll = 0;
+    actualIndex = 0;
+    correctCount = 0;
+    passLoc = 0;
+    refreshPizza = 0;
 
     setPage(page) {
         this.page = page;
@@ -16,15 +20,26 @@ export default class PageNav {
         this.scrollVal = scrollVal;
     }
 
-    setActualScroll(actualScroll){
+    setActualScroll(actualScroll,actualIndex){
         this.actualScroll = actualScroll
+        this.actualIndex = actualIndex
     }
 
     setlastScrollVal(lastScrollVal) {
         this.lastScrollVal = lastScrollVal;
     }
+    
+    setCorrectCount(correctCount) {
+        this.correctCount = correctCount;
+    }
 
-    // updateActiveStyle(page) { }
+    setPassLoc(passLoc) {
+        this.passLoc = passLoc;
+    }
+
+    setRefreshPizza(refreshPizza){
+        this.refreshPizza = refreshPizza;
+    }
 }
 
 decorate(PageNav, {
@@ -34,4 +49,8 @@ decorate(PageNav, {
     setlastScrollVal: action,
     actualScroll: observable,
     setActualScroll: action,
+    setCorrectCount: action,
+    setPassLoc: action,
+    refreshPizza: observable,
+    setRefreshPizza: action,
 });

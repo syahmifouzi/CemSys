@@ -17,7 +17,34 @@ const Picture = observer(
     }
 
     login() {
-      store.pageNav.setPage("home");
+      // store.pageNav.setPage("home");
+      //check index of passloc
+      const lstore = store.pageNav;
+      passloc = lstore.passLoc
+      actualIndex = lstore.actualIndex
+      correctCount = lstore.correctCount
+      refreshPizza = lstore.correctCount
+
+      if (passloc == actualIndex){
+        console.log("correct",passloc,actualIndex)
+        correctCount += 1
+        if(correctCount > 2){
+          console.log("first time was wrong",passloc,actualIndex)
+        }else if(correctCount == 2){
+          console.log(" 2 times correct",passloc,actualIndex)
+        }else{
+          lstore.setCorrectCount(correctCount) 
+        }
+      }else {
+        correctCount += 10
+        console.log("false",passloc,actualIndex)
+        if(correctCount > 15){
+          console.log("wrong 2 times",passloc,actualIndex)
+        }
+        lstore.setCorrectCount(correctCount) 
+      }
+
+      lstore.setRefreshPizza(refreshPizza+1)
     }
 
     render() {
@@ -79,28 +106,28 @@ const ScrollValComponent = observer(
           }
           if ((passVal >= 0 && passVal < 45) || (passVal < -315 && passVal >= -360)) {
             passVal = 0
-            store.pageNav.setActualScroll(0)
+            store.pageNav.setActualScroll(0,0)
           } else if ((passVal >= 45 && passVal < 90) || (passVal < -270 && passVal >= -315)) {
             passVal = 45
-            store.pageNav.setActualScroll(45)
+            store.pageNav.setActualScroll(45,1)
           } else if ((passVal >= 90 && passVal < 135) || (passVal < -225 && passVal >= -270)) {
             passVal = 90
-            store.pageNav.setActualScroll(90)
+            store.pageNav.setActualScroll(90,2)
           } else if ((passVal >= 135 && passVal < 180) || (passVal < -180 && passVal >= -225)) {
             passVal = 135
-            store.pageNav.setActualScroll(135)
+            store.pageNav.setActualScroll(135,3)
           } else if ((passVal >= 180 && passVal < 225) || (passVal < -135 && passVal >= -180)) {
             passVal = 180
-            store.pageNav.setActualScroll(180)
+            store.pageNav.setActualScroll(180,4)
           } else if ((passVal >= 225 && passVal < 270) || (passVal < -90 && passVal >= -135)) {
             passVal = 225
-            store.pageNav.setActualScroll(225)
+            store.pageNav.setActualScroll(225,5)
           } else if ((passVal >= 270 && passVal < 315) || (passVal < -45 && passVal >= -90)) {
             passVal = 270
-            store.pageNav.setActualScroll(270)
+            store.pageNav.setActualScroll(270,6)
           } else if ((passVal >= 315 && passVal < 360) || (passVal < 0 && passVal >= -45)) {
             passVal = 315
-            store.pageNav.setActualScroll(315)
+            store.pageNav.setActualScroll(315,7)
           }
           store.pageNav.setlastScrollVal(passVal);
         },
