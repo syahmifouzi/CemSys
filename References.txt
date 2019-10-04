@@ -12,3 +12,6 @@ https://www.npmjs.com/package/react-native-status-bar-height
 
 contain image size
 https://stackoverflow.com/questions/29476165/image-resizing-in-react-native
+
+async storage promise then()
+https://medium.com/@richardzhanguw/storing-and-retrieving-objects-using-asyncstorage-in-react-native-6bb1745fdcdd
