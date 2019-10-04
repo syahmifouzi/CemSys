@@ -4,6 +4,8 @@ import store from "../stores/index.js";
 import { observer } from "mobx-react";
 import Mainpage from "../containers/Mainpage";
 import Picture from "../containers/Picture";
+import PersonalDetails from "../containers/PersonalDetails";
+import SetupAuthy from "../containers/SetupAuthy";
 
 const Links = observer(
   class Links extends React.Component {
@@ -19,12 +21,18 @@ const Links = observer(
         case "pic":
           link = <Picture />
           break;
+        case "personal":
+          link = <PersonalDetails />
+          break;
+        case "setupAuthy":
+          link = <SetupAuthy />
+          break;
         default:
           break;
       }
 
       return (
-        <View style={{flex:1}}>{link}</View>
+        <View style={{ flex: 1 }}>{link}</View>
       )
     }
   }

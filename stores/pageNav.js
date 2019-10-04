@@ -8,7 +8,12 @@ export default class PageNav {
     actualIndex = 0;
     correctCount = 0;
     passLoc = 0;
-    refreshPizza = 0;
+    barCount = 0
+    barFlag = 0
+    is_registered = null;
+    colourIndex = 0;
+    password = '';
+    refreshPizza = 0
 
     setPage(page) {
         this.page = page;
@@ -20,7 +25,7 @@ export default class PageNav {
         this.scrollVal = scrollVal;
     }
 
-    setActualScroll(actualScroll,actualIndex){
+    setActualScroll(actualScroll, actualIndex) {
         this.actualScroll = actualScroll
         this.actualIndex = actualIndex
     }
@@ -28,7 +33,7 @@ export default class PageNav {
     setlastScrollVal(lastScrollVal) {
         this.lastScrollVal = lastScrollVal;
     }
-    
+
     setCorrectCount(correctCount) {
         this.correctCount = correctCount;
     }
@@ -37,8 +42,28 @@ export default class PageNav {
         this.passLoc = passLoc;
     }
 
-    setRefreshPizza(refreshPizza){
-        this.refreshPizza = refreshPizza;
+    setIs_registered(is_registered) {
+        this.is_registered = is_registered;
+    }
+
+    setColourIndex(colourIndex) {
+        this.colourIndex = colourIndex;
+    }
+
+    setPassword(password) {
+        this.password = password;
+    }
+
+    setBarCount(barCount) {
+        this.barCount = barCount
+    }
+
+    setBarFlag(barFlag) {
+        this.barFlag = barFlag
+    }
+
+    setRefreshPizza(refreshPizza) {
+        this.refreshPizza = refreshPizza
     }
 }
 
@@ -53,4 +78,9 @@ decorate(PageNav, {
     setPassLoc: action,
     refreshPizza: observable,
     setRefreshPizza: action,
+    setBarCount: action,
+    setIs_registered: action,
+    setColourIndex: action,
+    setPassword: action,
+    setBarFlag: action,
 });

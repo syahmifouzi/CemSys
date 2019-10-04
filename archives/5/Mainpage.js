@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesome } from '@expo/vector-icons';
-import { Text, View, TouchableOpacity, AsyncStorage } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
+import { AsyncStorage } from "react-native";
 import { observer } from "mobx-react";
 import store from "../stores/index.js";
 import styles from "./MainpageStyles.js";
@@ -35,8 +36,9 @@ const Mainpage = observer(
 
             retrieveData = async () => {
                 try {
-                    const retrievedItem = await AsyncStorage.multiGet(["is_registered", "colourIndex", "password", "barFlag"]);
-                    return retrievedItem
+                    const retrievedItem = await AsyncStorage.getItem("is_registered");
+                    const item = JSON.parse(retrievedItem);
+                    return item;
                 } catch (error) {
                     // Error retrieving data
                     console.log(error.message);
@@ -44,24 +46,12 @@ const Mainpage = observer(
             };
 
             retrieveData().then((item) => {
-                if (item[0][1] == null) {
+                console.log("item is: " + item)
+                if (item == null) {
                     console.log("if item is null")
                     store.pageNav.setPage("personal");
                 } else {
                     console.log("if item is NOT null")
-                    numColorIndex = parseInt(item[1][1])
-                    numbarFlag = parseInt(item[3][1])
-                    if (item[0][1] == "1") {
-                        console.log("go to authy page after gather private info:", item)
-                        store.pageNav.setIs_registered(1);
-                        store.pageNav.setColourIndex(numColorIndex);
-                        store.pageNav.setPassword(item[2][1]);
-                        if (numbarFlag) {
-                            alert('you are barred, contact admin to reset password')
-                        } else { store.pageNav.setPage("pic"); }
-                    } else {
-                        console.log("for some reason, item is registered != 1")
-                    }
                 }
             }).catch((error) => {
                 console.log('Promise is rejected with error: ' + error);
@@ -87,8 +77,7 @@ const Mainpage = observer(
         readDatabase() {
             retrieveData = async () => {
                 try {
-                    // const value = await AsyncStorage.getItem("MyApp_key");
-                    const value = await AsyncStorage.getAllKeys();
+                    const value = await AsyncStorage.getItem("@MyApp_key");
                     if (value !== null) {
                         // We have data!!
                         console.log(value);
@@ -105,7 +94,7 @@ const Mainpage = observer(
         deleteDatabase() {
             deleteData = async () => {
                 try {
-                    const value = await AsyncStorage.removeItem("barFlag");
+                    const value = await AsyncStorage.removeItem("@MyApp_key");
                 } catch (error) {
                     // Error retrieving data
                 }
@@ -124,9 +113,6 @@ const Mainpage = observer(
                     <TouchableOpacity style={styles.dButton} onPress={this.editPersonal}>
                         <Text>Edit Your Details</Text>
                     </TouchableOpacity>
-                    {/* <TouchableOpacity style={styles.dButton} onPress={this.deleteDatabase}>
-                        <Text>delete</Text>
-                    </TouchableOpacity> */}
                 </View>
             );
         }
