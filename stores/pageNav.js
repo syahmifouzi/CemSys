@@ -1,7 +1,7 @@
 import { decorate, observable, action } from "mobx";
 
 export default class PageNav {
-    page = "pic";
+    page = "home";
     scrollVal = 0;
     lastScrollVal = 0;
     actualScroll = 0;
