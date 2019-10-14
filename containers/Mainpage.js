@@ -120,7 +120,7 @@ const Mainpage = observer(
             return (
                 <View style={styles.container}>
                     <FontAwesome name="user-circle-o" size={100} color="grey" />
-                    <Text>Cem cem</Text>
+                    <Text>Tester profile</Text>
                     <TouchableOpacity style={styles.dButton} onPress={this.editPersonal}>
                         <Text>Edit Your Details</Text>
                     </TouchableOpacity>

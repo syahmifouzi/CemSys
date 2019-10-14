@@ -38,7 +38,7 @@ export default class PersonalDetails extends React.Component {
                     <TouchableOpacity style={{ margin: 10, padding: 10, alignItems: 'center', borderRadius: 10, backgroundColor: bgcolor, }} onPress={this.setup}>
                         <Text style={{ color: '#ffffff', fontWeight: 'bold' }}>Setup Authentication</Text>
                     </TouchableOpacity>
-                    <Text>Cem cem</Text>
+                    <Text>Tester details {"\n"}</Text>
                     <Text>Height</Text>
                     <Text>BMI</Text>
                     <Text>Rank</Text>
