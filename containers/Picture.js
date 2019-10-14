@@ -34,6 +34,10 @@ const Picture = observer(
 
             actualIndex += colourIndex
 
+            if (actualIndex > 7) {
+                actualIndex -= 8
+            }
+
             if (passloc == actualIndex) {
                 console.log("correct", passloc, actualIndex)
                 correctCount += 1
