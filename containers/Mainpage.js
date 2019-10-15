@@ -106,6 +106,8 @@ const Mainpage = observer(
             deleteData = async () => {
                 try {
                     const value = await AsyncStorage.removeItem("barFlag");
+                    const value1 = await AsyncStorage.removeItem("is_registered");
+                    const value2 = await AsyncStorage.removeItem("password");
                 } catch (error) {
                     // Error retrieving data
                 }
@@ -124,9 +126,9 @@ const Mainpage = observer(
                     <TouchableOpacity style={styles.dButton} onPress={this.editPersonal}>
                         <Text>Edit Your Details</Text>
                     </TouchableOpacity>
-                    {/* <TouchableOpacity style={styles.dButton} onPress={this.deleteDatabase}>
+                    <TouchableOpacity style={styles.dButton} onPress={this.deleteDatabase}>
                         <Text>delete</Text>
-                    </TouchableOpacity> */}
+                    </TouchableOpacity>
                 </View>
             );
         }
