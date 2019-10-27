@@ -1,7 +1,7 @@
 import { decorate, observable, action } from "mobx";
 
 export default class PageNav {
-    page = "home";
+    page = "tutorial";
     scrollVal = 0;
     lastScrollVal = 0;
     actualScroll = 0;
@@ -14,6 +14,7 @@ export default class PageNav {
     colourIndex = 0;
     password = '';
     refreshPizza = 0
+    barTimer = 0;
 
     setPage(page) {
         this.page = page;
@@ -65,6 +66,10 @@ export default class PageNav {
     setRefreshPizza(refreshPizza) {
         this.refreshPizza = refreshPizza
     }
+
+    setBarTimer(barTimer) {
+        this.barTimer = barTimer
+    }
 }
 
 decorate(PageNav, {
@@ -74,6 +79,7 @@ decorate(PageNav, {
     setlastScrollVal: action,
     actualScroll: observable,
     setActualScroll: action,
+    correctCount: observable,
     setCorrectCount: action,
     setPassLoc: action,
     refreshPizza: observable,
@@ -83,4 +89,5 @@ decorate(PageNav, {
     setColourIndex: action,
     setPassword: action,
     setBarFlag: action,
+    setBarTimer:action,
 });

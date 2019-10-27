@@ -18,10 +18,15 @@ export default class SetupAuthy extends React.Component {
 
         this.save = this.save.bind(this);
         this.back = this.back.bind(this);
+        this.tuto = this.tuto.bind(this);
     }
 
     back() {
         store.pageNav.setPage("personal")
+    }
+
+    tuto() {
+        store.pageNav.setPage("tutorial")
     }
 
     save() {
@@ -97,9 +102,12 @@ export default class SetupAuthy extends React.Component {
         return (
             <KeyboardAvoidingView style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', }} behavior="padding" enabled >
                 <View style={{ height: 25 }}></View>
-                <View style={{ width: 100 }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                     <TouchableOpacity style={{ margin: 10, padding: 10, alignItems: 'center', borderRadius: 10, backgroundColor: '#DDDDDD', }} onPress={this.back}>
                         <Text>Back</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={{ margin: 10, padding: 10, alignItems: 'center', borderRadius: 10, backgroundColor: '#DDDDDD', }} onPress={this.tuto}>
+                        <Text>Tutorial</Text>
                     </TouchableOpacity>
                 </View>
                 <ScrollView style={{ flex: 1, marginTop: '30%' }}>
