@@ -5,18 +5,18 @@ import { observer } from "mobx-react";
 import store from "../stores/index.js";
 import styles from "./MainpageStyles.js";
 
-let UID123_delta = {
-    "users": {
-        "syahmi@gmail.com": {
-            "date": "october",
-            "name": "mimo"
-        },
-        "aris": {
-            "date": "december",
-            "name": "eri"
-        }
-    }
-};
+// let UID123_delta = {
+//     "users": {
+//         "syahmi@gmail.com": {
+//             "date": "october",
+//             "name": "mimo"
+//         },
+//         "aris": {
+//             "date": "december",
+//             "name": "eri"
+//         }
+//     }
+// };
 
 const Mainpage = observer(
     class Mainpage extends React.Component {
