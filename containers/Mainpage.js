@@ -5,18 +5,18 @@ import { observer } from "mobx-react";
 import store from "../stores/index.js";
 import styles from "./MainpageStyles.js";
 
-let UID123_delta = {
-    "users": {
-        "syahmi@gmail.com": {
-            "date": "october",
-            "name": "mimo"
-        },
-        "aris": {
-            "date": "december",
-            "name": "eri"
-        }
-    }
-};
+// let UID123_delta = {
+//     "users": {
+//         "syahmi@gmail.com": {
+//             "date": "october",
+//             "name": "mimo"
+//         },
+//         "aris": {
+//             "date": "december",
+//             "name": "eri"
+//         }
+//     }
+// };
 
 const Mainpage = observer(
     class Mainpage extends React.Component {
@@ -50,14 +50,31 @@ const Mainpage = observer(
                 } else {
                     console.log("if item is NOT null")
                     numColorIndex = parseInt(item[1][1])
-                    numbarFlag = parseInt(item[3][1])
+                    numbarFlag = item[3][1]
                     if (item[0][1] == "1") {
                         console.log("go to authy page after gather private info:", item)
+                        // console.log("numbarFlag is", numbarFlag)
                         store.pageNav.setIs_registered(1);
                         store.pageNav.setColourIndex(numColorIndex);
                         store.pageNav.setPassword(item[2][1]);
-                        if (numbarFlag) {
-                            alert('you are barred, contact admin to reset password')
+                        if (numbarFlag ) {
+                            // var msec = new Date(Date.parse(numbarFlag));
+                            // var today = new Date();
+                            // let diff = msec.getMinutes() - today.getMinutes()
+                            let diff = (Date.parse(new Date(numbarFlag)) - Date.parse(new Date())) / 1000;
+                            console.log('diff is', diff)
+                            
+                            if (diff < 0) {
+                                //reset
+                                console.log('resetting diff')
+                                this.deleteDatabase()
+                                store.pageNav.setPage("pic");
+                            } else {
+                                let round = Math.ceil(diff/60)
+                                let roundTxt = 'Please wait ' + round + ' minutes'
+                                alert(roundTxt)
+                            }
+                            
                         } else { store.pageNav.setPage("pic"); }
                     } else {
                         console.log("for some reason, item is registered != 1")
