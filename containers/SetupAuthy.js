@@ -114,7 +114,7 @@ export default class SetupAuthy extends React.Component {
                     <View style={{ alignItems: 'center' }}>
                         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                             <View><Text>Your Choosen Colour: </Text></View>
-                            <View><View style={{ width: 50, height: 50, backgroundColor: this.state.colour }}></View></View>
+                            <View><View style={{ width: 50, height: 50, borderWidth: 1, borderColor: '#d6d7da', backgroundColor: this.state.colour }}></View></View>
                         </View>
                         <Picker
                             selectedValue={this.state.colour}
@@ -123,10 +123,10 @@ export default class SetupAuthy extends React.Component {
                                 this.setState({ colour: itemValue, colourIndex: itemIndex })
                             }}>
                             <Picker.Item label="Purple" value="purple" />
-                            <Picker.Item label="Blue" value="blue" />
+                            <Picker.Item label="Blue" value="deepskyblue" />
                             <Picker.Item label="Green" value="green" />
                             <Picker.Item label="Yellow" value="yellow" />
-                            <Picker.Item label="Orange" value="orange" />
+                            <Picker.Item label="Orange" value="#F25925" />
                             <Picker.Item label="White" value="white" />
                             <Picker.Item label="Black" value="black" />
                             <Picker.Item label="Red" value="red" />

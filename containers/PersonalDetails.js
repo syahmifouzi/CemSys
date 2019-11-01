@@ -84,7 +84,7 @@ export default class PersonalDetails extends React.Component {
               Setup Authentication
             </Text>
           </TouchableOpacity>
-          <Text>Cem cem</Text>
+          <Text>Details</Text>
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <Modal
               animationType="slide"
