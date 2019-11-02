@@ -94,7 +94,7 @@ export default class SetupAuthy extends React.Component {
                     <Text style={{ color: 'red' }}><FontAwesome name="times-circle" size={20} color="red" /> Make sure it is exactly 8 characters</Text>
                     <Text style={{ color: 'red' }}><FontAwesome name="times-circle" size={20} color="red" /> Make sure a character is only used once</Text>
                     <Text style={{ color: 'red' }}><FontAwesome name="times-circle" size={20} color="red" /> Only use these symbols(if any): '@' and/or '#'</Text>
-                    <Text style={{ color: 'blue', textDecorationLine: 'underline' }}>Click here to see the demo again</Text>
+                    <Text style={{ color: 'blue', textDecorationLine: 'underline' }}>Click here to learn the tutorial</Text>
                 </View>
         } else {
             showWarning = <Text />
