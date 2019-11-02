@@ -11,9 +11,9 @@ export default class PersonalDetails extends React.Component {
       modalVisible: false,
       modalVisible2: false,
       modalVisible3: false,
-      heightTxt: '23',
-      weightTxt: '40',
-      rankTxt: '13',
+      heightTxt: 'Hazim bin Fouzi',
+      weightTxt: '0196955919',
+      rankTxt: '79 1945632 1',
     };
 
     this.setup = this.setup.bind(this);
@@ -84,7 +84,7 @@ export default class PersonalDetails extends React.Component {
               Setup Authentication
             </Text>
           </TouchableOpacity>
-          <Text>Details</Text>
+          <Text style={{fontWeight: "bold"}}> Details</Text> 
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <Modal
               animationType="slide"
@@ -124,7 +124,7 @@ export default class PersonalDetails extends React.Component {
               </View>
             </Modal>
             <View>
-              <Text>Height: {this.state.heightTxt} </Text>
+              <Text><Text style={{fontWeight: "bold"}}>Full Name:</Text> {this.state.heightTxt} </Text>
             </View>
             <View>
               <TouchableOpacity
@@ -180,7 +180,7 @@ export default class PersonalDetails extends React.Component {
               </View>
             </Modal>
             <View>
-              <Text>Weight: {this.state.weightTxt} </Text>
+              <Text><Text style={{fontWeight: "bold"}}>Phone Number:</Text> {this.state.weightTxt} </Text>
             </View>
             <View>
               <TouchableOpacity
@@ -236,7 +236,7 @@ export default class PersonalDetails extends React.Component {
               </View>
             </Modal>
             <View>
-              <Text>Rank: {this.state.rankTxt} </Text>
+              <Text><Text style={{fontWeight: "bold"}}>Bank Account:</Text> {this.state.rankTxt} </Text>
             </View>
             <View>
               <TouchableOpacity

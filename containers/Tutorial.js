@@ -10,7 +10,7 @@ import stylesPizz from '../components/PizzaSliceStyles';
 const screenHeight = Math.round(Dimensions.get('window').height);
 
 const abjad = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '#', '@']
-const tutoPassword = 'JOHNsnoW'
+const tutoPassword = 'Ayam2019'
 const tutoColour = 5
 
 let letter1 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -514,18 +514,21 @@ const Tutorial = observer(
 
         render() {
             return (
-                <View style={{ flex: 1 }}>
+                <View style={{ flex: 1}}>
                     <View style={{ height: 25 }}></View>
                     <View style={{ flex: 5 }}>
                         <ScrollValComponent />
                     </View>
                     <View>
-                        <Text>Step 1: Your Password must have exactly 8 characters (EXAMPLE: JOHN snoW).</Text>
-                        <Text>Step 2: You must choose exactly 1 colour (EXAMPLE: white).</Text>
-                        <Text>Step 3: Identify which section contain exactly four (4) of your password characters.</Text>
-                        <Text>Step 4: Swipe up and down to rotate the colour.</Text>
-                        <Text>Step 5: Press the conform button when the colour and section matched.</Text>
-                        <Text>The (White) colour and any (4 characters from JOHN snoW) must matched</Text>
+                        <Text> Step 1: Your Password must have exactly 8 characters {"\n "}(EXAMPLE: Ayam2019).</Text>
+                        <Text> Step 2: You must choose exactly 1 colour {"\n "}(EXAMPLE: white).</Text>
+                        <Text> Step 3: Identify which section contain atleast 2 of your {"\n "}password characters, 
+                            to make the search easier, the {"\n "}section will contain up to 4 of your password characters. 
+                        </Text>
+                        <Text> Step 4: Swipe up and down to rotate the colour.</Text>
+                        {/* <Text> Step 5: Press the conform button when the colour and section matched.</Text> */}
+                        <Text><Text style={{fontWeight: "bold"}}>{"\n "}Test yourself!</Text>: The (White) colour and 
+                            any (2 characters {"\n "}from Ayam2019) must matched, click confirm to see the {"\n "}result.</Text>
                     </View>
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around' }}>
                         <TouchableOpacity style={styles.dButton} onPress={this.back} >

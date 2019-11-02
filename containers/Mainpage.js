@@ -139,7 +139,7 @@ const Mainpage = observer(
             return (
                 <View style={styles.container}>
                     <FontAwesome name="user-circle-o" size={100} color="grey" />
-                    <Text>Harith</Text>
+                    <Text>{`\n Hazim Fouzi \n`}</Text>
                     <TouchableOpacity style={styles.dButton} onPress={this.editPersonal}>
                         <Text>Edit Your Details</Text>
                     </TouchableOpacity>
