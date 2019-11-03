@@ -5,18 +5,7 @@ import { observer } from "mobx-react";
 import store from "../stores/index.js";
 import styles from "./MainpageStyles.js";
 
-// let UID123_delta = {
-//     "users": {
-//         "syahmi@gmail.com": {
-//             "date": "october",
-//             "name": "mimo"
-//         },
-//         "aris": {
-//             "date": "december",
-//             "name": "eri"
-//         }
-//     }
-// };
+
 
 const Mainpage = observer(
     class Mainpage extends React.Component {
@@ -143,9 +132,9 @@ const Mainpage = observer(
                     <TouchableOpacity style={styles.dButton} onPress={this.editPersonal}>
                         <Text>Edit Your Details</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.dButton} onPress={this.deleteDatabase}>
+                    {/* <TouchableOpacity style={styles.dButton} onPress={this.deleteDatabase}>
                         <Text>delete</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
             );
         }
